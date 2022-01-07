@@ -1,0 +1,3 @@
+add-nvme-support
+change-install-dir-in-makefile
+static-version-number

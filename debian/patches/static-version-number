@@ -1,0 +1,51 @@
+Author: Kevin Chevreuil - Kaisen <kaisen@kaisenlinux.org>
+
+--- whdd-3.0.1.orig/version.sh
++++ whdd-3.0.1/version.sh
+@@ -1,45 +1,6 @@
+ #!/bin/sh
+ 
+-# check for git short hash
+-if ! test "$revision"; then
+-    revision=$(cd "$1" && git describe --tags 2> /dev/null)
+-fi
+-
+-# Shallow Git clones (--depth) do not have the N tag:
+-# use 'git-YYYY-MM-DD-hhhhhhh'.
+-test "$revision" || revision=$(cd "$1" &&
+-  git log -1 --pretty=format:"git-%cd-%h" --date=short 2> /dev/null)
+-
+-# Snapshots from gitweb are in a directory called whdd-hhhhhhh or
+-# whdd-HEAD-hhhhhhh.
+-if [ -z "$revision" ]; then
+-  srcdir=$(cd "$1" && pwd)
+-  case "$srcdir" in
+-    */whdd-[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f])
+-      git_hash="${srcdir##*-}";;
+-    */whdd-HEAD-[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f])
+-      git_hash="${srcdir##*-}";;
+-  esac
+-fi
+-
+-# no revision number found
+-test "$revision" || revision=$(cd "$1" && cat RELEASE 2> /dev/null)
+-
+-# Append the Git hash if we have one
+-test "$revision" && test "$git_hash" && revision="$revision-$git_hash"
+-
+-# releases extract the version number from the VERSION file
+-version=$(cd "$1" && cat VERSION 2> /dev/null)
+-test "$version" || version=$revision
+-
+-test -n "$3" && version=$version-$3
+-
+-if [ -z "$2" ]; then
+-    echo "$version"
+-    exit
+-fi
+-
+-NEW_REVISION="#define WHDD_VERSION \"$version\""
++NEW_REVISION="#define WHDD_VERSION \"3.0.1\""
+ OLD_REVISION=$(cat version.h 2> /dev/null)
+ 
+ # Update version.h only on revision changes to avoid spurious rebuilds

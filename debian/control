@@ -1,0 +1,27 @@
+Source: whdd
+Section: utils
+Priority: optional
+Maintainer: Kevin Chevreuil - Kaisen <kaisen@kaisenlinux.org>
+Build-Depends: debhelper-compat (= 13), libncurses5-dev, libncursesw5-dev, libtinfo-dev, dialog, pkg-config
+Standards-Version: 4.6.0
+Homepage: https://whdd.github.io/
+Vcs-Browser: https://gitlab.com/kaisenlinux/packages/whdd
+Vcs-Git: https://gitlab.com/kaisenlinux/packages/whdd.git
+
+Package: whdd
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Diagnostic and recovery tool for block devices
+ A diagnostic and recovery tool for block devices
+ (near to replace MHDD for Linux).
+ .
+ Functionality:
+ - List available block devices (HDD, Flash drives etc.)
+ - List S.M.A.R.T. parameters and SMART tests info
+ - Perform tests:
+   * Read
+   * Write zeros
+ - Visualize results of tests
+ - Low-level device copying (not implemented yet)
+ Program is designed for adding more complex tests or 
+ recovery procedures, and different front-ends.

@@ -1,0 +1,5 @@
+whdd (3.0.1-1kaisen) kaisen-packages; urgency=medium
+
+  * First packaging for Kaisen Linux
+
+ -- Kevin Chevreuil - Kaisen <kaisen@kaisenlinux.org>  Fri, 07 Jan 2022 02:55:46 +0100
